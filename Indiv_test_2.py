@@ -4,6 +4,8 @@ Created on Wed Jan 29 14:44:19 2025
 
 @author: marjan
 """
+# This code tests a pretrained model's (vqvae model trained on IXI custom dataset) performance on IndivRobotic's T1 scans as 
+# well as on one AD subject from ADNI dataset
 import os
 import torch
 import numpy as np
