@@ -9,7 +9,6 @@ import torch
 import numpy as np
 import nibabel as nib
 from PIL import Image
-# vqvae is a script and VQVAE is a class in that script
 from vqvae import VQVAE
 from torch import nn, optim
 from scipy.ndimage import zoom
@@ -17,7 +16,7 @@ from torchvision import transforms
 from torch.utils.data import DataLoader, Dataset
 from matplotlib import pyplot as plt
 
-'''
+
 class IXI_Dataset(Dataset):
     def __init__(self, nifti_dir, transform=None):
         self.nifti_dir = nifti_dir
@@ -132,8 +131,7 @@ if __name__ == "__main__":
         save_img_tensors_as_grid(imgs, n_rows, "true_AD")
         inference = model(imgs.to(device))["x_recon"] # from dictionary - vqvae model output
         save_img_tensors_as_grid(inference, n_rows, "recon_AD")
-        
- '''       
+          
 
 
 # For AD subject
