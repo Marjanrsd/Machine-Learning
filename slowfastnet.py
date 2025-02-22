@@ -87,6 +87,7 @@ class SlowFast(nn.Module):
             block, 512, layers[3], stride=2, head_conv=3)
         self.dp = nn.Dropout(dropout)
         self.fc = nn.Linear(self.fast_inplanes+2048, class_num, bias=False)
+        self.sig = nn.Sigmoid()
         
     def forward(self, input):
         fast, lateral = self.FastPath(input[:, :, ::2, :, :])
@@ -94,6 +95,7 @@ class SlowFast(nn.Module):
         x = torch.cat([slow, fast], dim=1)
         x = self.dp(x)
         x = self.fc(x)
+        x = self.sig(x) # get our (x,y) inferences
         return x
 
     def SlowPath(self, input, lateral):
