@@ -179,7 +179,7 @@ class SlowFast(nn.Module):
         return nn.Sequential(*layers)
 
 # would be better named resnet503d, because it is not resnet
-# because it has a block structure like the normal
+# It has a block structure like the normal
 # 2d resnet, but using 3D convolutions instead of 2d
 
 def resnet50(**kwargs):
