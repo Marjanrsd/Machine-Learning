@@ -87,6 +87,7 @@ class SlowFast(nn.Module):
             block, 512, layers[3], stride=2, head_conv=3)
         self.dp = nn.Dropout(dropout)
         self.fc = nn.Linear(self.fast_inplanes+2048, class_num, bias=False)
+        
     def forward(self, input):
         fast, lateral = self.FastPath(input[:, :, ::2, :, :])
         slow = self.SlowPath(input[:, :, ::16, :, :], lateral)
@@ -94,8 +95,6 @@ class SlowFast(nn.Module):
         x = self.dp(x)
         x = self.fc(x)
         return x
-
-
 
     def SlowPath(self, input, lateral):
         x = self.slow_conv1(input)
