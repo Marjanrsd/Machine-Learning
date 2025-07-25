@@ -133,8 +133,7 @@ num_rounds = 6 # 9
 num_splits = 100 # 800
 X = pd.read_csv("./all_trials.csv", header=0)
 y = pd.read_csv("./all_labels.csv", header=0)
-print(X.shape)
-print(y.shape)
+
 train_x, test_x, train_y, test_y = train_test_split(X,y,random_state=42,test_size=test_ratio)
 #train_x = scale(train_x)
 #test_x = scale(test_x)
